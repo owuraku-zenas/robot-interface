@@ -17,12 +17,13 @@ function App() {
     });
     tempRos.on('connection', () => {
       setRos(tempRos);
+      setErrorMessage(null);
       localStorage.setItem('rosURL', url);
       setConnected(true);
     });
 
     tempRos.on('error', (error) => {
-      setErrorMessage("Error connecting to Websocket");
+      setErrorMessage("Unable to connect to Websocket");
     });
 
     tempRos.on('close', () => {
