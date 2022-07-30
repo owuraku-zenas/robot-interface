@@ -1,22 +1,37 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import ROSLIB from 'roslib';
+import MainView from './views/MainView';
+import ConnectionView from './views/ConnectionView';
 
 function App() {
 
   const [ros, setRos] = useState(null);
   const [connected, setConnected] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  const connect = () => {
-    setRos(new ROSLIB.Ros({
-      url: 'ws://localhost:9090'
-    }));
-    localStorage.setItem('rosURL', 'ws://localhost:9090');
-    setConnected(true);
+  const connect = (ip, port) => {
+    const url = `ws://${ip}:${port}`;
+    const tempRos = new ROSLIB.Ros({
+      url: url
+    });
+    tempRos.on('connection', () => {
+      setRos(tempRos);
+      localStorage.setItem('rosURL', url);
+      setConnected(true);
+    });
+
+    tempRos.on('error', (error) => {
+      setErrorMessage("Error connecting to Websocket");
+    });
+
+    tempRos.on('close', () => {
+      setConnected(false);
+    });
   }
 
   const disconnect = () => {
-    setRos(null);
+    ros.close();
     localStorage.removeItem('rosURL');
     setConnected(false);
   }
@@ -48,17 +63,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>ROS UI</h1>
-        <p>
-          {connected ? 'Connected' : 'Not connected'}
-        </p>
-        {
-          connected ?
-          <button onClick={() => disconnect() } >Disconnect</button> :
-          <button onClick={() => connect() } >Connect</button>
-        }
-      </header>
+      {
+        !connected ?
+          <ConnectionView connect={connect} errorMessage={errorMessage} /> :
+          <MainView disconnect={disconnect} ros={ros}/>
+      }
     </div>
   );
 }
