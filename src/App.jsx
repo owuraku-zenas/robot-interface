@@ -52,10 +52,23 @@ function App() {
       // if ros exists in local storage, try to connect
       const rosURL = localStorage.getItem('rosURL');
       if (rosURL) {
-        setRos(new ROSLIB.Ros({
+        const tempRos = new ROSLIB.Ros({
           url: rosURL
-        }));
-        setConnected(true);
+        });
+        tempRos.on('connection', () => {
+          setRos(tempRos);
+          setErrorMessage(null);
+          localStorage.setItem('rosURL', rosURL);
+          setConnected(true);
+        });
+
+        tempRos.on('error', (error) => {
+          setErrorMessage("Unable to connect to Websocket");
+        });
+
+        tempRos.on('close', () => {
+          setConnected(false);
+        });
       }
     }
   }, [ros])
@@ -67,7 +80,7 @@ function App() {
       {
         !connected ?
           <ConnectionView connect={connect} errorMessage={errorMessage} /> :
-          <MainView disconnect={disconnect} ros={ros}/>
+          <MainView disconnect={disconnect} ros={ros} />
       }
     </div>
   );
