@@ -1,0 +1,54 @@
+.connection__area {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.connection__area h1 {
+    margin: 0;
+    padding: 10px;
+}
+
+.error__message {
+    color: red;
+    font-size: medium;
+    margin: 0;
+    padding: 5px;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.form input {
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    width: 60%;
+    max-width: 350px;
+    color: white;
+    height: 30px;
+    padding-left: 15px;
+    font-size: large;
+}
+
+.connect__button {
+    width: 60%;
+    max-width: 400px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    background-color: #ffffff;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+}
