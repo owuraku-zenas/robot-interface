@@ -10,8 +10,8 @@
 .control {
     position: absolute;
     cursor: pointer;
-    right: -20px;
-    top: 36px;
+    right: -30px;
+    top: 40px;
     border: 6px solid #30353f;
     border-radius: 50%;
     transition-duration: 500ms;
