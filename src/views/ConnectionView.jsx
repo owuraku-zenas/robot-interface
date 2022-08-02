@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../styles/ConnectionView.module.css'
+import rosLogo from '../images/ros-logo.svg'
 
 const ConnectionView = ({ connect, errorMessage }) => {
   const [ip, setIp] = useState("");
@@ -7,7 +8,7 @@ const ConnectionView = ({ connect, errorMessage }) => {
 
   return (
     <div className={styles.connection__area}>
-      <h1>ROS UI</h1>
+      <img className={styles.logo} src={rosLogo} alt="ROS Logo" />
       {errorMessage && <p className={styles.error__message}>{errorMessage}</p>}
       {/* TODO: Input Field for ip and port*/}
       <form className={styles.form} onSubmit={
@@ -15,29 +16,29 @@ const ConnectionView = ({ connect, errorMessage }) => {
           event.preventDefault()
           connect(ip, port)
         }}>
-          <input
-            type="text"
-            value={ip}
-            onChange={
-              (event) => {
-                setIp(event.target.value)
-              }
+        <input
+          type="text"
+          value={ip}
+          onChange={
+            (event) => {
+              setIp(event.target.value)
             }
-            placeholder="IP Address"
-            required
-          />
-          <input type="text"
-            value={port}
-            placeholder="Port Number"
-            min={80}
-            required
-            max={9999}
-            onChange={
-              (event) => {
-                setPort(event.target.value)
-              }
+          }
+          placeholder="IP Address"
+          required
+        />
+        <input type="text"
+          value={port}
+          placeholder="Port Number"
+          min={80}
+          required
+          max={9999}
+          onChange={
+            (event) => {
+              setPort(event.target.value)
             }
-          />
+          }
+        />
         <button className={styles.connect__button}>Connect</button>
       </form>
     </div>
