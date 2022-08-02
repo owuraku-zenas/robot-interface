@@ -1,11 +1,15 @@
 import React from 'react'
+import SideBar from '../components/SideBar'
+import styles from '../styles/MainView.module.css'
 
 const MainView = ({ disconnect }) => {
     return (
-        <div>
-            <h1>LoginView</h1>
-            <p>Connected</p>
-            <button onClick={() => disconnect()} >Disconnect</button>
+        <div className={styles.main__view}>
+            <SideBar />
+            <div className={styles.main__area}>
+                <p>Connected</p>
+                <button onClick={() => disconnect()} >Disconnect</button>
+            </div>
         </div>
     )
 }

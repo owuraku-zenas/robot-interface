@@ -10,7 +10,7 @@ const ConnectionView = ({ connect, errorMessage }) => {
     <div className={styles.connection__area}>
       <img className={styles.logo} src={rosLogo} alt="ROS Logo" />
       {errorMessage && <p className={styles.error__message}>{errorMessage}</p>}
-      {/* TODO: Input Field for ip and port*/}
+      {/* TODO: Input Field for username and password*/}
       <form className={styles.form} onSubmit={
         (event) => {
           event.preventDefault()

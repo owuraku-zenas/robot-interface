@@ -1,0 +1,9 @@
+.main__view {
+    display: flex;
+}
+
+.main__area {
+    padding: 28px;
+    font-size: x-large;
+    flex: 1;
+}
