@@ -3,7 +3,7 @@
 }
 
 .main__area {
-    padding: 28px;
+    padding:0 28px;
     font-size: x-large;
     flex: 1;
 }

@@ -4,7 +4,7 @@
     width: 288px;
     position: relative;
     transition-duration: 300ms;
-    padding: 1.25rem;
+    padding: 0 1.25rem;
 }
 
 .control {
@@ -21,6 +21,7 @@
     display: flex;
     column-gap: 10px;
     align-items: center;
+    margin-top: 1.25rem;
 }
 
 .logo {
@@ -50,7 +51,7 @@
     padding-top: 20px;
     font-size: large;
 
-}   
+}
 
 .menu__item {
     color: #fff;
