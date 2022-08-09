@@ -1,21 +1,87 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import AuthContext from '../context/AuthProvider'
 import styles from '../styles/ConnectionView.module.css'
 import rosLogo from '../images/ros-logo.svg'
+import ROSLIB from 'roslib'
+import { login } from '../api/services'
+import { useNavigate } from 'react-router-dom'
 
-const ConnectionView = ({ connect, errorMessage }) => {
+
+
+const ConnectionView = () => {
+  const { setAuth } = useContext(AuthContext)
+  const { setRos } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [ip, setIp] = useState("");
   const [port, setPort] = useState("");
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const connect = () => {
+    const url = `ws://${ip}:${port}`;
+    const tempRos = new ROSLIB.Ros({
+      url: url
+    });
+
+    tempRos.on('connection', () => {
+      setRos(tempRos)
+      localStorage.setItem('rosURL', url)
+      navigate('/')
+    });
+
+    tempRos.on('error', (error) => {
+      setErrorMessage("Unable to connect to Websocket");
+    });
+  }
+
+  const loginUser = async () => {
+    const response = await login(email, password)
+    if (response?.status === 200) {
+      setAuth(response?.data?.user)
+      localStorage.setItem('token', response?.data?.access_token)
+      connect()
+
+    } else {
+      setErrorMessage("Invalid email or password")
+    }
+  }
 
   return (
     <div className={styles.connection__area}>
       <img className={styles.logo} src={rosLogo} alt="ROS Logo" />
       {errorMessage && <p className={styles.error__message}>{errorMessage}</p>}
-      {/* TODO: Input Field for username and password*/}
       <form className={styles.form} onSubmit={
         (event) => {
-          event.preventDefault()
-          connect(ip, port)
-        }}>
+          setErrorMessage("")
+          event.preventDefault();
+          // onSubmit()
+          loginUser()
+        }
+      }>
+        <input
+          type="text"
+          value={email}
+          onChange={
+            (event) => {
+              setEmail(event.target.value)
+            }
+          }
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={
+            (event) => {
+              setPassword(event.target.value)
+            }
+          }
+          placeholder="Password"
+          required
+        />
         <input
           type="text"
           value={ip}
