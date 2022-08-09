@@ -78,3 +78,13 @@
     transform-origin: left;
     transition-duration: 300ms;
 }
+
+.nav__div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 93vh;
+    background-color: #30353f;
+    transition-duration: 300ms;
+}
