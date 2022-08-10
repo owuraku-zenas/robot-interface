@@ -70,7 +70,7 @@ const SideBar = () => {
                     {Menu.map((menu, index) => (
                         <li key={index}
                             className={styles.menu__item}
-                            style={window.location.pathname == menu.link ? { backgroundColor: "#fff", color: "#30353f", borderRadius: "5px" } : null}
+                            style={window.location.pathname === menu.link ? { backgroundColor: "#fff", color: "#30353f", borderRadius: "5px" } : null}
                             onClick={
                                 () => navigate(menu.link)
                             }
