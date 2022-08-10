@@ -18,6 +18,8 @@ const MainView = () => {
         if (response?.status === 200) {
             setAuth(response?.data?.user)
         } else {
+            setAuth(null)
+            setRos(null)
             navigate('/connect')
         }
     }
@@ -33,6 +35,8 @@ const MainView = () => {
         })
 
         tempRos.on('error', () => {
+            setAuth(null)
+            setRos(null)
             navigate("/connect")
         })
     }

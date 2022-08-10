@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom'
 
 
 const ConnectionView = () => {
-  const { setAuth } = useContext(AuthContext)
-  const { setRos } = useContext(AuthContext)
+  const { setAuth, auth } = useContext(AuthContext)
+  const { setRos, ros } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const [email, setEmail] = useState("")
@@ -21,7 +21,7 @@ const ConnectionView = () => {
 
   useEffect(() => {
     // Check if user is already signed in using authcontext
-    if (setAuth !== null) {
+    if (auth !== null && ros !== null && localStorage.getItem('token') !== null && localStorage.getItem('rosURL') !== null) {
       navigate('/')
     }
 
