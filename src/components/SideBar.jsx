@@ -20,6 +20,7 @@ const SideBar = () => {
         { title: "3D Map", icon: <GiCube size={30} />, link: "/3d" },
         { title: "Rover Model", icon: <IoLogoModelS size={30} />, link: "/rover" },
         { title: "ROS Topics", icon: <FaThList size={30} />, link: "/topics" },
+        { title: "Settings", icon: <FaUserCog size={30} />, link: "/settings" }
     ]
 
     return (
@@ -53,12 +54,8 @@ const SideBar = () => {
                 </ul>
                 <ul className={styles.menu__list}>
                     <li className={styles.menu__item}>
-                        <FaUserCog size={30} />
-                        <span style={!open ? { display: "none" } : null} >Settings</span>
-                    </li>
-                    <li className={styles.menu__item}>
                         <GoSignOut size={30}/>
-                        <span style={!open ? { display: "none" } : null} >Settings</span>
+                        <span style={!open ? { display: "none" } : null} >Sign Out</span>
                     </li>
                 </ul>
             </div>
