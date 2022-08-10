@@ -3,6 +3,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from 'react'
 import MainView from './views/MainView'
 import ConnectionView from './views/ConnectionView'
+import DashboardView from "./views/DashboardView";
+import LocationView from "./views/LocationView";
+import VideoStreamView from "./views/VideoStreamView";
+import Map2dView from "./views/Map2dView";
+import Map3dView from "./views/Map3dView";
+import RoverModelView from "./views/RoverModelView";
+import TopicsView from "./views/TopicsView";
+import SettingView from "./views/SettingView";
+import PageNotFound from "./views/PageNotFound";
 
 const AppRouter = () => {
     return (
@@ -10,15 +19,15 @@ const AppRouter = () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<MainView />} >
-                        <Route path="/" element={<h1>Dashboard</h1>} />
-                        <Route path="/location" element={<h1>GPS</h1>} />
-                        <Route path="/video-stream" element={<h1>Video</h1>} />
-                        <Route path="/2d-map" element={<h1>2D Map</h1>} />
-                        <Route path="/3d-map" element={<h1>3D Map</h1>} />
-                        <Route path="/rover-model" element={<h1>Model</h1>} />
-                        <Route path="/topics" element={<h1>List of Topics</h1>} />
-                        <Route path="/settings" element={<h1>Settings</h1>} />
-                        <Route path="*" element={<h1>Page Not Found</h1>} />
+                        <Route path="/" element={ <DashboardView /> } />
+                        <Route path="/location" element={ <LocationView /> } />
+                        <Route path="/video-stream" element={ <VideoStreamView /> } />
+                        <Route path="/2d-map" element={ <Map2dView /> } />
+                        <Route path="/3d-map" element={ <Map3dView /> } />
+                        <Route path="/rover-model" element={ <RoverModelView /> } />
+                        <Route path="/topics" element={ <TopicsView /> } />
+                        <Route path="/settings" element={ <SettingView /> } />
+                        <Route path="*" element={ <PageNotFound /> } />
                     </Route>
                     <Route path="/connect" element={<ConnectionView />} />
                     <Route path="*" element={<h1>Page Not Found</h1>} />
