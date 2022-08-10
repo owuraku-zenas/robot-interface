@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import AuthContext from '../context/AuthProvider'
 import styles from '../styles/ConnectionView.module.css'
 import rosLogo from '../images/ros-logo.svg'
@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 const ConnectionView = () => {
+  // TODO: Prevent login if already logged in
   const { setAuth } = useContext(AuthContext)
   const { setRos } = useContext(AuthContext)
   const navigate = useNavigate()
@@ -18,6 +19,15 @@ const ConnectionView = () => {
   const [ip, setIp] = useState("");
   const [port, setPort] = useState("");
   const [errorMessage, setErrorMessage] = useState("")
+
+  useEffect(() => {
+    // Check if user is already signed in using authcontext
+    if (setAuth !== null) {
+      navigate('/')
+    }
+
+
+  }, [])
 
   const connect = () => {
     const url = `ws://${ip}:${port}`;
