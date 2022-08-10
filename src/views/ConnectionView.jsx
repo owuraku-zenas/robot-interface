@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom'
 
 
 const ConnectionView = () => {
-  // TODO: Prevent login if already logged in
   const { setAuth } = useContext(AuthContext)
   const { setRos } = useContext(AuthContext)
   const navigate = useNavigate()
