@@ -62,8 +62,6 @@ const MainView = () => {
             <SideBar />
             <div className={styles.main__area}>
                 <Outlet />
-                <p>Connected</p>
-                <button>Disconnect</button>
             </div>
         </div>
     )

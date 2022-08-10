@@ -10,15 +10,17 @@ import { GoSignOut } from 'react-icons/go'
 import { FaThList, FaUserCog } from 'react-icons/fa'
 import AuthContext from '../context/AuthProvider'
 import { logout } from '../api/services'
+import { useNavigate } from 'react-router-dom'
 
 
 const SideBar = () => {
     const [open, setOpen] = useState(false)
     const { setAuth } = useContext(AuthContext)
     const { setRos } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     // Create a signout function
-    const signout = async () => {
+    const logoutUser = async () => {
         const token = localStorage.getItem('token')
         const response = await logout(token)
         if (response?.status === 200) {
@@ -34,12 +36,12 @@ const SideBar = () => {
     }
 
     const Menu = [
-        { title: "Dashboard", icon: <MdSpaceDashboard size={30} />, link: "/dashboard" },
-        { title: "GPS", icon: <MdLocationOn size={30} />, link: "/gps" },
-        { title: "Video Feed", icon: <MdVideoCall size={30} />, link: "/video" },
-        { title: "2D Map", icon: <BsSquareFill size={30} />, link: "/2d" },
-        { title: "3D Map", icon: <GiCube size={30} />, link: "/3d" },
-        { title: "Rover Model", icon: <IoLogoModelS size={30} />, link: "/rover" },
+        { title: "Dashboard", icon: <MdSpaceDashboard size={30} />, link: "/" },
+        { title: "GPS", icon: <MdLocationOn size={30} />, link: "/location" },
+        { title: "Video Feed", icon: <MdVideoCall size={30} />, link: "/video-stream" },
+        { title: "2D Map", icon: <BsSquareFill size={30} />, link: "/2d-map" },
+        { title: "3D Map", icon: <GiCube size={30} />, link: "/3d-map" },
+        { title: "Rover Model", icon: <IoLogoModelS size={30} />, link: "/rover-model" },
         { title: "ROS Topics", icon: <FaThList size={30} />, link: "/topics" },
         { title: "Settings", icon: <FaUserCog size={30} />, link: "/settings" }
     ]
@@ -65,9 +67,14 @@ const SideBar = () => {
             </div>
             <div className={styles.nav__div}>
                 <ul className={styles.menu__list}>
-                    {/* TODO: Wrapp a link around when handling routes */}
                     {Menu.map((menu, index) => (
-                        <li key={index} className={styles.menu__item}>
+                        <li key={index}
+                            className={styles.menu__item}
+                            style={window.location.pathname == menu.link ? { backgroundColor: "#fff", color: "#30353f", borderRadius: "5px" } : null}
+                            onClick={
+                                () => navigate(menu.link)
+                            }
+                        >
                             {menu.icon}
                             <span style={!open ? { display: "none" } : null} >{menu.title}</span>
                         </li>
@@ -75,9 +82,9 @@ const SideBar = () => {
                 </ul>
                 <ul className={styles.menu__list}>
                     <li className={styles.menu__item} onClick={() => {
-                        signout()
+                        logoutUser()
                     }}>
-                        <GoSignOut size={30}/>
+                        <GoSignOut size={30} />
                         <span style={!open ? { display: "none" } : null} >Sign Out</span>
                     </li>
                 </ul>
