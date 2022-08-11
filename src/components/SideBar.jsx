@@ -15,8 +15,7 @@ import { useNavigate } from 'react-router-dom'
 
 const SideBar = () => {
     const [open, setOpen] = useState(false)
-    const { setAuth } = useContext(AuthContext)
-    const { setRos } = useContext(AuthContext)
+    const { resetContext } = useContext(AuthContext)
     const navigate = useNavigate()
 
     // Create a signout function
@@ -24,10 +23,7 @@ const SideBar = () => {
         const token = localStorage.getItem('token')
         const response = await logout(token)
         if (response?.status === 200) {
-            setAuth(null)
-            setRos(null)
-            localStorage.removeItem('token')
-            localStorage.removeItem('rosURL')
+            resetContext()
             window.location.reload(false);
         } else {
             console.log("Error signing out")
