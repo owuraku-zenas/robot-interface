@@ -6,6 +6,7 @@ export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState(null);
     const [ros, setRos] = useState(null);
     const [topics, setTopics] = useState(null);
+    const [map, setMap] = useState(null);
 
     // TODO: Add new states to the reset function
     const resetContext = () => {
@@ -17,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth, setRos, ros, topics, setTopics, resetContext }}>
+        <AuthContext.Provider value={{ auth, setAuth, setRos, ros, topics, setTopics, resetContext, map, setMap }}>
             {children}
         </AuthContext.Provider>
     );
