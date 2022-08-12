@@ -1,6 +1,6 @@
 import Map from '../components/Map'
 import Marker from '../components/Marker'
-import mapStyles from '../styles/mapStyles.js'
+
 
 const zoom = 20
 const center = { lat: 5.692110393455236, lng: -0.2098751958173014 }
