@@ -51,8 +51,27 @@ export const getUser = async (token) => {
 
 
 // TODO: Change name, email, and password
-export const editUser = () => {
+export const updateUser = async (token, user) => {
+    try {
+        const response = await axios.put('/auth/user', user, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        }).then((response) => {
+            console.log(response);
+            return response
+        }).catch((response) => {
+            return response
+        })
 
+        return response;
+
+    } catch (error) {
+        console.log(error)
+        return error;
+    }
 }
 
 // TODO: Logout User

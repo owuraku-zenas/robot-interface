@@ -1,0 +1,114 @@
+.header {
+    display: flex;
+    padding: 20px;
+
+    background-color: #30353f;
+}
+
+.header h1 {
+    margin: 0;
+    color: #fff;
+    transform-origin: left;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    transition-duration: 100ms;
+}
+
+.settings {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    gap: 20px;
+    padding: 40px;
+}
+
+.settings__section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, fr);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: large;
+    color: #fff;
+}
+
+.settings__section__header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings__section__header h1 {
+    font-size: large;
+}
+
+.settings__section__header p {
+    font-size: medium;
+}
+
+.settings__section__content {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    background-color: #30353f;
+    border-radius: 5px;
+    flex-direction: column;
+}
+.inputs {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+}
+.input label {
+    font-size: medium;
+    font-weight: 400;
+    color: #fff;
+}
+
+.input input {
+    background: none;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #586174;
+    margin: 8px 0;
+    width: 60%;
+    height: 30px;
+    color: #fff;
+    padding-left: 15px;
+    font-size: medium;
+}
+
+.content__button__area {
+    background-color: #2b303a;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.content__button__area button {
+    border: none;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.divider {
+    border: 1px solid #586174;
+    width: 100%;
+}
