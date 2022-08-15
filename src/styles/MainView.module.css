@@ -1,5 +1,6 @@
 .main__view {
     display: flex;
+    min-width: 1430px;
 }
 
 .main__area {
@@ -7,4 +8,5 @@
     padding-bottom: 0;
     font-size: x-large;
     flex: 1;
+    padding-left: 80px;
 }
