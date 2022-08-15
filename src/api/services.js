@@ -97,3 +97,31 @@ export const logout = async (token) => {
         return error;
     }
 }
+
+// TODO: Change Password
+export const changePassword = async (token, currentPassword, newPassword, confirmPassword) => {
+    try {
+        const response = await axios.post('/auth/change-password', {
+            current_password: currentPassword,
+            new_password: newPassword,
+            confirm_password: confirmPassword
+        }, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        }).then((response) => {
+            console.log(response?.data?.errors);
+            return response
+        }).catch((response) => {
+            return response
+        })
+
+        return response;
+
+    } catch (error) {
+        console.log(error)
+        return error;
+    }
+}

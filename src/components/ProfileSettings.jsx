@@ -8,7 +8,6 @@ const ProfileSettings = () => {
     const { auth, setAuth } = useContext(AuthContext)
     const [name, setname] = useState("")
     const [email, setemail] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
         if (auth !== null) {
@@ -27,12 +26,14 @@ const ProfileSettings = () => {
         const response = await updateUser(token, user)
         if (response?.status === 200) {
             setAuth(user)
+            alert("Profile Updated Successfully")
         } else {
-            setErrorMessage("Unable to Update Profile")
+            alert("Profile did not update")
         }
     }
 
     return (
+        // TODO: Implement a notification system for the user to see if the profile was changed or not
         <div className={styles.settings__section}>
             <div className={styles.settings__section__header}>
                 <h1>
