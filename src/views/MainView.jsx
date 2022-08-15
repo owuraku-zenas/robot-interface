@@ -20,7 +20,7 @@ const MainView = () => {
     const checkUser = async (token) => {
         const response = await getUser(token)
         if (response?.status === 200) {
-            setAuth(response?.data?.user)
+            setAuth(response?.data)
         } else {
             setAuth(null)
             setRos(null)
