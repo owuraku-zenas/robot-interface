@@ -1,20 +1,3 @@
-.header {
-    display: flex;
-    padding: 20px;
-
-    background-color: #30353f;
-}
-
-.header h1 {
-    margin: 0;
-    color: #fff;
-    transform-origin: left;
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    transition-duration: 100ms;
-}
-
 .settings {
     margin: 0 auto;
     display: flex;
@@ -96,7 +79,7 @@
     padding: 12px;
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .content__button__area button {
