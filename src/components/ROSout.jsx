@@ -79,7 +79,7 @@ const ROSout = () => {
                             <span style={styles.verbosity2} >
                                 [INFO]
                             </span>
-                            <span>
+                            <span style={{color: "green"}} >
                                 {" "}
                                 [{log.date}]
                             </span>
@@ -87,7 +87,7 @@ const ROSout = () => {
                                 {" "}
                                 [{log.data.name}]
                             </span>
-                            {" : "}
+                            {"  "}
                             <span>
                                 {log.data.msg}
                             </span>
@@ -107,7 +107,7 @@ const ROSout = () => {
                                 {" "}
                                 [{log.data.name}]
                             </span>
-                            {" : "}
+                            {"  "}
                             <span>
                                 {log.data.msg}
                             </span>
