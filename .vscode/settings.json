@@ -4,5 +4,10 @@
         "/home/owuraku/ros_workspace/devel/lib/python3/dist-packages",
         "/opt/ros/noetic/lib/python3/dist-packages"
     ],
-    "ros.distro": "noetic"
+    "ros.distro": "noetic",
+    "python.analysis.extraPaths": [
+        "/home/owuraku/school_workspace/devel/lib/python3/dist-packages",
+        "/home/owuraku/ros_workspace/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
 }
