@@ -38,7 +38,7 @@ const SideBar = () => {
         { title: "2D Map", icon: <BsSquareFill size={30} />, link: "/2d-map" },
         { title: "3D Map", icon: <GiCube size={30} />, link: "/3d-map" },
         { title: "Rover Model", icon: <IoLogoModelS size={30} />, link: "/rover-model" },
-        { title: "ROS Topics", icon: <FaThList size={30} />, link: "/topics" },
+        { title: "ROS Logs", icon: <FaThList size={30} />, link: "/logs" },
         { title: "Settings", icon: <FaUserCog size={30} />, link: "/settings" }
     ]
 

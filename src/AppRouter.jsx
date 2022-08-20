@@ -9,9 +9,9 @@ import VideoStreamView from "./views/VideoStreamView";
 import Map2dView from "./views/Map2dView";
 import Map3dView from "./views/Map3dView";
 import RoverModelView from "./views/RoverModelView";
-import TopicsView from "./views/TopicsView";
 import SettingView from "./views/SettingView";
 import PageNotFound from "./views/PageNotFound";
+import LogsView from "./views/TopicsView";
 
 const AppRouter = () => {
     return (
@@ -25,7 +25,7 @@ const AppRouter = () => {
                         <Route path="/2d-map" element={ <Map2dView /> } />
                         <Route path="/3d-map" element={ <Map3dView /> } />
                         <Route path="/rover-model" element={ <RoverModelView /> } />
-                        <Route path="/topics" element={ <TopicsView /> } />
+                        <Route path="/logs" element={ <LogsView /> } />
                         <Route path="/settings" element={ <SettingView /> } />
                         <Route path="*" element={ <PageNotFound /> } />
                     </Route>
