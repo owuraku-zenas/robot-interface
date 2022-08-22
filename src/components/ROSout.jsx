@@ -70,9 +70,10 @@ const ROSout = () => {
     }
 
     return (
-// TODO: add auoscrolling to logs
+        // TODO: add auoscrolling to logs
         <div style={styles.logs__view} id="logs" >
             {logs.map((log, index) => {
+                // TODO: Check for levels between 2 and error logs as well. Check issue on github
                 if (log.data.level === 2) {
                     return (
                         <pre key={index} style={styles.log2} >
