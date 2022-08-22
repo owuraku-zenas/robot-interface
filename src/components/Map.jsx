@@ -19,7 +19,7 @@ const Map = ({ center, zoom, children }) => {
     }
 
 
-    return <div ref={ref} id="map" style={{ height: "100vh" }} >
+    return <div ref={ref} id="map" style={{ height: "100%" }} >
         {/* {children} */}
         {React.Children.map(children, child => React.cloneElement(child, { map }))}
     </div>

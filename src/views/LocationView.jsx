@@ -2,7 +2,7 @@ import Map from '../components/Map'
 import Marker from '../components/Marker'
 
 
-const zoom = 20
+const zoom = 6
 const center = { lat: 5.692110393455236, lng: -0.2098751958173014 }
 
 
@@ -19,12 +19,13 @@ const LocationView = () => {
   ]
 
   return (
-    
-    <Map center={center} zoom={zoom} >
-      {positions.map((position, index) => (
-        <Marker key={index} position={position} />
-      ))}
-    </Map>
+    <div style={{height: "100vh"}}>
+      <Map center={center} zoom={zoom} >
+        {positions.map((position, index) => (
+          <Marker key={index} position={position} />
+        ))}
+      </Map>
+    </div>
   )
 }
 

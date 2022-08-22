@@ -1,8 +1,3 @@
-.video__view {
-    height: 400px;
-    background-color: green;
-}
-
 .video__feed {
-    height: 600px;
+    height: 100vh;
 }

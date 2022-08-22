@@ -15,7 +15,7 @@ import LogsView from "./views/TopicsView";
 
 const AppRouter = () => {
     return (
-        <div>
+        <div style={{height: "100vh"}}>
             <Router>
                 <Routes>
                     <Route path="/" element={<MainView />} >
