@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/robot-interface/build/static/css/main.8b5662cc.css",
+    "main.js": "/robot-interface/build/static/js/main.9e802196.js",
+    "static/media/ros-logo.svg": "/robot-interface/build/static/media/ros-logo.37fadf38d9c8919d69949beb4b976624.svg",
+    "index.html": "/robot-interface/build/index.html",
+    "main.8b5662cc.css.map": "/robot-interface/build/static/css/main.8b5662cc.css.map",
+    "main.9e802196.js.map": "/robot-interface/build/static/js/main.9e802196.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b5662cc.css",
+    "static/js/main.9e802196.js"
+  ]
+}
