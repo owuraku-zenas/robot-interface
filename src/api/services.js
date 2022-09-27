@@ -1,6 +1,5 @@
 import axios from './axios'
 
-// TODO: Login 
 export const login = async (email, password) => {
     try {
         const response = await axios.post('/auth/login', {
@@ -25,7 +24,6 @@ export const login = async (email, password) => {
 
 }
 
-// TODO: Get User
 export const getUser = async (token) => {
     try {
         const response = await axios.get('/auth/user', {
@@ -50,7 +48,6 @@ export const getUser = async (token) => {
 }
 
 
-// TODO: Change name, email, and password
 export const updateUser = async (token, user) => {
     try {
         const response = await axios.put('/auth/user', user, {
@@ -74,7 +71,6 @@ export const updateUser = async (token, user) => {
     }
 }
 
-// TODO: Logout User
 export const logout = async (token) => {
     try {
         const response = await axios.get('/auth/logout', {
@@ -98,7 +94,6 @@ export const logout = async (token) => {
     }
 }
 
-// TODO: Change Password
 export const changePassword = async (token, currentPassword, newPassword, confirmPassword) => {
     try {
         const response = await axios.post('/auth/change-password', {

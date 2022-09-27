@@ -5,6 +5,7 @@ import rosLogo from '../images/ros-logo.svg'
 import ROSLIB from 'roslib'
 import { login } from '../api/services'
 import { useNavigate } from 'react-router-dom'
+import LoadingView from './LoadingView'
 
 
 
@@ -12,6 +13,7 @@ const ConnectionView = () => {
   const { setAuth, auth } = useContext(AuthContext)
   const { setRos, ros } = useContext(AuthContext)
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false)
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -46,6 +48,7 @@ const ConnectionView = () => {
   }
 
   const loginUser = async () => {
+    setIsLoading(true)
     const response = await login(email, password)
     if (response?.status === 200) {
       setAuth(response?.data?.user)
@@ -55,8 +58,11 @@ const ConnectionView = () => {
     } else {
       setErrorMessage("Invalid email or password")
     }
+    setIsLoading(false)
   }
-
+  if (isLoading) {
+    return <LoadingView />
+  }
   return (
     <div className={styles.connection__area}>
       <img className={styles.logo} src={rosLogo} alt="ROS Logo" />
