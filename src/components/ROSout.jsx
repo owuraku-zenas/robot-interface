@@ -76,11 +76,31 @@ const ROSout = () => {
                 // TODO: Check for levels between 2 and error logs as well. Check issue on github
                 if (log.data.level === 2) {
                     return (
-                        <pre key={index} style={styles.log2} >
+                        <pre key={index} style={{padding: "3px"}} >
                             <span style={styles.verbosity2} >
                                 [INFO]
                             </span>
                             <span style={{color: "green"}} >
+                                {" "}
+                                [{log.date}]
+                            </span>
+                            <span>
+                                {" "}
+                                [{log.data.name}]
+                            </span>
+                            {"  "}
+                            <span>
+                                {log.data.msg}
+                            </span>
+                        </pre>
+                    )
+                }  if (log.data.level > 2 && log.data.level < 6) {
+                    return (
+                        <pre key={index} style={{color: "#FDDA0D", padding: "3px"}} >
+                            <span style={{background: "#FDDA0D", color: "#FFF"}} >
+                                [WARN]
+                            </span>
+                            <span style={{color: "#FDDA0D"}} >
                                 {" "}
                                 [{log.date}]
                             </span>
