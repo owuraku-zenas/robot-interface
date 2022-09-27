@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import AuthContext from '../context/AuthProvider'
-import ROS2D from 'ros2d'
+import { OccupancyGridClient, Viewer, } from "ros2d";
 
 const styles = {
     map2d: {
-        width: "100%",
-        height: "100%",
+        // width: "100%",
+        // height: "100%",
+        backgroundColor: "#ddd",
+        // display: "flex",
+
     }
 }
 
@@ -21,79 +24,46 @@ const Map2D = () => {
             return
         } else {
             // Create a map viewer
-            var map = new ROS2D.Viewer({
-                divID: '2d-map',
-                width: '100%',
-                height: '100%',
-                // mapScale: 0.5,
-                // mapCenter: [0, 0],
-                // mapBackgroundColor: '#ffffff',
-                // mapBackgroundImage: '',
-                // mapBackgroundImageLoad: true,
-                // mapBackgroundImageAlpha: 1,
-                // mapBackgroundImageRepetition: 'repeat',
-                // showLink: false,
-                // showFullscreenButton: true,
-                // showNavigation: true,
-                // showZoom: true,
-                // showScale: false,
-                // showCompass: false,
-                // showLocation: false,
-                // showMousePosition: false,
-                // showInfo: false,
-                // showLogo: false,
-                // showStatus: false,
-                // showSlider: false,
-                // showTooltip: false,
-                // showZoomSlider: true,
-                // showLayerSwitcher: false,
-                // showBaseLayerSwitcher: false,
-                // showOverlays: false,
-                // showLayers: true,
-                // showLegend: false,
-                // showFeatureInfo: false,
-                // showFeaturePopup: false,
-                // showFeaturePopupClose: false,
-                // showFeaturePopupFullscreen: false,
-                // showFeaturePopupMetadata: false,
-                // showFeaturePopupDownload: false,
-                // showFeaturePopupEdit: false,
-                // showFeaturePopupDelete: false,
-                // showFeaturePopupUpload: false,
-                // showFeaturePopupZoom: false,
-                // showFeaturePopupEditForm: false,
-                // showFeaturePopupEditFormClose: false,
-            })
 
+            var map = new Viewer({
+                divID: '2d-map',
+                width: '1200',
+                height: '600',
+                mapScale: 100,
+
+            })
+            console.log("map", map)
+            //  Create the map client
+            let mapClient = new OccupancyGridClient({
+                ros: ros,
+                // size:20,
+                rootObject: map.scene,
+                topic: '/map',
+                continuous: true,
+                style: {
+                    'color': '#ff0000',
+                    'opacity': 0.5,
+                    'weight': 1,
+                    'fillColor': '#ff0000',
+                    'fillOpacity': 0.5,
+                },
+            })
+            console.log("2DMap", mapClient);
+
+            // mapClient.on('change', function () {
+            //     map.scaleToDimensions(600, 1200);
+            //     // map.shift(mapClient.currentGrid.pose.position.x, mapClient.currentGrid.pose.position.y);
+            //     // map.shift(200, 200);
+            // });
         }
 
-    
-        //  Create the map client
-        var mapClient = new ROS2D.OccupancyGridClient({
-            ros: ros,
-            rootObject: map,
-            topic: '/map',
-            continuous: true,
-            style: {
-                'color': '#ff0000',
-                'opacity': 0.5,
-                'weight': 1,
-                'fillColor': '#ff0000',
-                'fillOpacity': 0.5,
-            },
-        })
-
-        setIsLoading(false)
         console.log(ros);
-        // console.log("2DMap", mapClient);
-
-
-
-    })
+        setIsLoading(false)
+    }, [])
 
     return (
-        <div style={styles.map2d} id="2d-map">
-            Map2D
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100%", width: "100%"}}>
+            <div id="2d-map" />
         </div>
     )
 }
