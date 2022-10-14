@@ -1,3 +1,5 @@
-.video__feed {
+.video__feed{
     height: 100vh;
+    height: calc(100vh - 7.2vh)
+    /* position: absolute; */
 }

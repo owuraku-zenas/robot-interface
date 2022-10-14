@@ -22,7 +22,6 @@ const AppRouter = () => {
                         <Route path="/location" element={ <LocationView /> } />
                         <Route path="/video-stream" element={ <VideoStreamView /> } />
                         <Route path="/2d-map" element={ <Map2dView /> } />
-                        <Route path="/3d-map" element={ <Map3dView /> } />
                         <Route path="/logs" element={ <LogsView /> } />
                         <Route path="/settings" element={ <SettingView /> } />
                         <Route path="*" element={ <PageNotFound /> } />
